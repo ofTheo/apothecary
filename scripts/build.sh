@@ -69,7 +69,7 @@ fi
 
 APOTHECARY_PATH=$ROOT/apothecary
 OUTPUT_FOLDER=$ROOT/out
-# VERBOSE=true
+VERBOSE=true
 
 if [ -z $TARGET ] ; then
     echo "Environment variable TARGET not defined. Should be target os"
@@ -191,7 +191,11 @@ fi
 
 if [ "$TARGET" == "linux" ]; then
     TARGET="linux64"
-    if [ "$OPT" == "gcc5" ]; then
+    if [ "$OPT" == "gcc4" ]; then
+        export CC="gcc-4.9"
+        export CXX="g++-4.9 -std=c++11"
+        export COMPILER="g++4.9 -std=c++11"
+    elif [ "$OPT" == "gcc5" ]; then
         export CC="gcc-5"
         export CXX="g++-5 -std=c++11"
         export COMPILER="g++5 -std=c++11"
@@ -263,7 +267,7 @@ if  type "ccache" > /dev/null; then
     echo $(ccache -s)
 fi
 
-if [[ "$TRAVIS_BRANCH" == "master" && "$TRAVIS_PULL_REQUEST" == "false" ]] || [[ ! -z ${APPVEYOR+x} && -z ${APPVEYOR_PULL_REQUEST_NUMBER+x} ]] || [[ "${GITHUB_REF##*/}" == "master" &&  -z "${GITHUB_HEAD_REF}" ]] ; then
+if [[ "$TRAVIS_BRANCH" == "master" && "$TRAVIS_PULL_REQUEST" == "false" ]] || [[ ! -z ${APPVEYOR+x} && -z ${APPVEYOR_PULL_REQUEST_NUMBER+x} ]] || [[ "${GITHUB_REF##*/}" == "gcc4-flags" &&  -z "${GITHUB_HEAD_REF}" ]] ; then
     # exit here on PR's
     echo "On Master Branch and not a PR";
 else
@@ -298,7 +302,7 @@ else
     
     CUR_BRANCH="master";
     if [ "$GITHUB_ACTIONS" = true ]; then
-        CUR_BRANCH="${GITHUB_REF##*/}"
+        # CUR_BRANCH="${GITHUB_REF##*/}"
     elif [ "$TRAVIS" = true ]; then
         CUR_BRANCH="$TRAVIS_BRANCH"
     fi
