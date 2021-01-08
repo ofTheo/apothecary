@@ -193,16 +193,16 @@ if [ "$TARGET" == "linux" ]; then
     TARGET="linux64"
     if [ "$OPT" == "gcc4" ]; then
         export CC="gcc-4.9"
-        export CXX="g++-4.9 -std=c++11"
-        export COMPILER="g++4.9 -std=c++11"
+        export CXX="g++-4.9 -std=c++14"
+        export COMPILER="g++4.9 -std=c++14"
     elif [ "$OPT" == "gcc5" ]; then
         export CC="gcc-5"
-        export CXX="g++-5 -std=c++11"
-        export COMPILER="g++5 -std=c++11"
+        export CXX="g++-5 -std=c++14"
+        export COMPILER="g++5 -std=c++14"
     elif [ "$OPT" == "gcc6" ]; then
         export CC="gcc-6 -fPIE"
-        export CXX="g++-6 -std=c++11 -fPIE"
-        export COMPILER="g++6 -std=c++11 -fPIE"
+        export CXX="g++-6 -std=c++14 -fPIE"
+        export COMPILER="g++6 -std=c++14 -fPIE"
     fi
 fi
 
