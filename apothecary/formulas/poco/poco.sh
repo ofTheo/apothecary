@@ -134,10 +134,6 @@ function prepare() {
 # executed inside the lib src dir
 function build() {
     local BUILD_OPTS="--no-tests --no-samples --static --omit=CppUnit,CppUnit/WinTestRunner,Data,Data/SQLite,Data/ODBC,Data/MySQL,PageCompiler,PageCompiler/File2Page,CppParser,PDF,PocoDoc,ProGen,MongoDB"
-    
-    # only want release builds
-    sed -i '' 's/DEFAULT_TARGET = all_static/DEFAULT_TARGET = static_release/g' build/rules/global
-
     if [ "$TYPE" == "osx" ] ; then
         CURRENTPATH=`pwd`
         echo "--------------------"
@@ -154,6 +150,7 @@ function build() {
         
         local BUILD_OPTS="$BUILD_OPTS --include-path=$OPENSSL_INCLUDE --library-path=$OPENSSL_LIBS"
         
+        sed -i '' 's/DEFAULT_TARGET = all_static/DEFAULT_TARGET = static_release/g' build/rules/global
         local SDK_PATH=$(xcrun --sdk macosx --show-sdk-path)
 
         export ARCHFLAGS="-arch arm64 -arch x86_64 -mmacosx-version-min=${OSX_MIN_SDK_VER} -isysroot${SDK_PATH}"
@@ -270,6 +267,8 @@ function build() {
         STATICOPT_CC=-fPIC
         STATICOPT_CXX=-fPIC
   
+        sed -i '' 's/DEFAULT_TARGET = all_static/DEFAULT_TARGET = static_release/g' build/rules/global
+
         # loop through architectures! yay for loops!
         for IOS_ARCH in ${IOS_ARCHS}
         do
