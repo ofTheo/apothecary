@@ -301,9 +301,10 @@ if [ ! -z ${APPVEYOR+x} ]; then
 else
     
     CUR_BRANCH="master";
-    if [ "$GITHUB_ACTIONS" = true ]; then
-        # CUR_BRANCH="${GITHUB_REF##*/}"
-    elif [ "$TRAVIS" = true ]; then
+#    if [ "$GITHUB_ACTIONS" = true ]; then
+#        CUR_BRANCH="${GITHUB_REF##*/}"
+#    el
+    if [ "$TRAVIS" = true ]; then
         CUR_BRANCH="$TRAVIS_BRANCH"
     fi
     
