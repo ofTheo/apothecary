@@ -202,8 +202,7 @@ function build() {
     if [ $ARCH == 32 ] ; then
       mkdir -p build_vs_32
       cd build_vs_32
-      "/C/Program Files (x86)/Microsoft Visual Studio/2017/Enterprise/VC/Auxiliary/Build/vcvarsall.bat" x86
-      cmake -G "Visual Studio 15 2017" -A Win32 "\
+      cmake .. -G "Visual Studio $VS_VER"\
       -DBUILD_PNG=OFF \
       -DWITH_OPENCLAMDBLAS=OFF \
       -DCMAKE_CXX_FLAGS="-fvisibility-inlines-hidden -stdlib=libc++ " \
@@ -297,8 +296,7 @@ function build() {
     elif [ $ARCH == 64 ] ; then
       mkdir -p build_vs_64
       cd build_vs_64
-      "/C/Program Files (x86)/Microsoft Visual Studio/2017/Enterprise/VC/Auxiliary/Build/vcvarsall.bat" amd64
-      cmake -G "Visual Studio 15 2017" -A x64 "\
+      cmake .. -G "Visual Studio 15 2017 Win64" \
       -DBUILD_PNG=OFF \
       -DWITH_OPENCLAMDBLAS=OFF \
       -DCMAKE_CXX_FLAGS="-fvisibility-inlines-hidden -stdlib=libc++ " \
