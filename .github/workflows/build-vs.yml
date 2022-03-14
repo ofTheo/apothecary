@@ -29,11 +29,11 @@ jobs:
             dos2unix
             gperf
             git
-	  - name: setup python
-		uses: actions/setup-python@v2
+      - name: setup python
+        uses: actions/setup-python@v2
         with:
           python-version: '3.9'
-	  - name: install python packages
+      - name: install python packages
         run: python -m pip numby
       - name: Clone repository
         uses: actions/checkout@v2
