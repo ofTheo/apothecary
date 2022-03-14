@@ -195,8 +195,10 @@ function build() {
     echo "Log:" >> "${LOG}" 2>&1
     set +e
 
-    export PYTHON_VERSION_STRING=3.9.10
-    export PYTHON_EXECUTABLE=C:/hostedtoolcache/windows/Python/3.9.10/x64/python.exe
+    export PYTHON_VERSION_STRING=3.9.9
+    export PYTHON_EXECUTABLE=D:/a/_temp/msys64/usr/bin/python.exe
+    
+    D:/a/_temp/msys64/usr/bin/python.exe -mpip install numpy
 
     if [ $ARCH == 32 ] ; then
       mkdir -p build_vs_32
