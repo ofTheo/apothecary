@@ -202,6 +202,7 @@ function build() {
     if [ $ARCH == 32 ] ; then
       mkdir -p build_vs_32
       cd build_vs_32
+      "c:/Program Files (x86)/Microsoft Visual Studio 15.0/VC/vcvarsall.bat"
       cmake .. -G "Visual Studio $VS_VER"\
       -DBUILD_PNG=OFF \
       -DWITH_OPENCLAMDBLAS=OFF \
@@ -296,6 +297,7 @@ function build() {
     elif [ $ARCH == 64 ] ; then
       mkdir -p build_vs_64
       cd build_vs_64
+      "c:/Program Files (x86)/Microsoft Visual Studio 15.0/VC/vcvarsall.bat"
       cmake .. -G "Visual Studio $VS_VER Win64" \
       -DBUILD_PNG=OFF \
       -DWITH_OPENCLAMDBLAS=OFF \
