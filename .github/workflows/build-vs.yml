@@ -29,7 +29,6 @@ jobs:
             dos2unix
             gperf
             git
-      - name: Setup python
       - uses: actions/setup-python@v2
 		with:
 		  python-version: '3.9'
