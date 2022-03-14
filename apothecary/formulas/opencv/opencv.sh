@@ -195,10 +195,9 @@ function build() {
     echo "Log:" >> "${LOG}" 2>&1
     set +e
 
-    export PYTHON_VERSION_STRING=3.9.9
-    export PYTHON_EXECUTABLE=D:/a/_temp/msys64/usr/bin/python.exe
-    
-    D:/a/_temp/msys64/usr/bin/python.exe -mpip install numpy
+#    export PYTHON_VERSION_STRING=3.9.9
+#    export PYTHON_EXECUTABLE=D:/a/_temp/msys64/usr/bin/python.exe
+#    D:/a/_temp/msys64/usr/bin/python.exe -mpip install numpy
 
     if [ $ARCH == 32 ] ; then
       mkdir -p build_vs_32
@@ -230,8 +229,6 @@ function build() {
       -DBUILD_NEW_PYTHON_SUPPORT=OFF \
       -DHAVE_opencv_python2=OFF \
       -DHAVE_opencv_python3=OFF \
-      -DPYTHON_VERSION_STRING=$PYTHON_VERSION_STRING \
-      -DPYTHON_DEFAULT_EXECUTABLE=$PYTHON_EXECUTABLE \
       -DBUILD_opencv_apps=OFF \
       -DBUILD_opencv_videoio=OFF \
       -DBUILD_opencv_videostab=OFF \
@@ -326,8 +323,6 @@ function build() {
       -DBUILD_NEW_PYTHON_SUPPORT=OFF \
       -DHAVE_opencv_python3=OFF \
       -DHAVE_opencv_python2=OFF \
-      -DPYTHON_VERSION_STRING=$PYTHON_VERSION_STRING \
-      -DPYTHON_DEFAULT_EXECUTABLE=$PYTHON_EXECUTABLE \
       -DBUILD_opencv_apps=OFF \
       -DBUILD_opencv_videoio=OFF \
       -DBUILD_opencv_videostab=OFF \
