@@ -29,12 +29,11 @@ jobs:
             dos2unix
             gperf
             git
-      - name: Setup python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.9'
-          cache: 'pip'
-        run: pip install numpy
+	  - uses: actions/setup-python@v2
+		with:
+		  python-version: '3.9'
+		  cache: 'pip'
+	  - run: pip install numby
       - name: Clone repository
         uses: actions/checkout@v2
       #- name: Install StrawberryPerl
