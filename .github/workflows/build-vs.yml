@@ -29,7 +29,9 @@ jobs:
             dos2unix
             gperf
             git
-            conda
+            mingw-w64-x86_64-python3
+            mingw-w64-x86_64-python3-pip
+            mingw-w64-x86_64-python3-numpy
       - name: Clone repository
         uses: actions/checkout@v2
       #- name: Install StrawberryPerl
@@ -38,9 +40,7 @@ jobs:
         uses: microsoft/setup-msbuild@v1.0.2
       - name: Build
         working-directory: ${{env.GITHUB_WORKSPACE}}
-        run: |
-          conda install numpy
-          scripts/build.sh
+        run: scripts/build.sh
         env:
           BUNDLE: ${{ matrix.bundle }}
           TARGET: "vs"
