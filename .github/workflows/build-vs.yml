@@ -29,6 +29,7 @@ jobs:
             dos2unix
             gperf
             git
+            conda
       - name: Clone repository
         uses: actions/checkout@v2
       #- name: Install StrawberryPerl
@@ -37,7 +38,9 @@ jobs:
         uses: microsoft/setup-msbuild@v1.0.2
       - name: Build
         working-directory: ${{env.GITHUB_WORKSPACE}}
-        run: scripts/build.sh
+        run: |
+          conda install numpy
+          scripts/build.sh
         env:
           BUNDLE: ${{ matrix.bundle }}
           TARGET: "vs"
