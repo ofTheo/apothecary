@@ -131,9 +131,9 @@ if not defined VCINSTALLDIR (
     ) else (
       if %VS_VERSION%==vs160 (
         if %PLATFORM%==x64 (
-          call "%VS160COMNTOOLS%%VS_VARSALL%" x86_amd64 8.1
+          call "%VS160COMNTOOLS%%VS_VARSALL%" x86_amd64
         ) else (
-          call "%VS160COMNTOOLS%%VS_VARSALL%" x86 8.1
+          call "%VS160COMNTOOLS%%VS_VARSALL%" x86
         )
       )
     )
