@@ -113,6 +113,9 @@ function prepare() {
         export OPENSSL_DIR="$(cygpath -w $OF_LIBS_OPENSSL_ABS_PATH)"
         # export ESCAPED_OPENSSL_DIR="$(echo $OPENSSL_DIR  | sed 's/\\/\\\\/g' | sed 's/\:/\\:/g')"
         echo $OPENSSL_DIR
+        
+        # remove windows 8.1 
+        sed -i.tmp "/WindowsTargetPlatformVersion/d" Foundation/Foundation_vs160.vcxproj
 
         # # replace OPENSSL_DIR=C:\OpenSSL with our OPENSSL_DIR
         # sed -i.tmp "s|C:\\\OpenSSL|$ESCAPED_OPENSSL_DIR|g" buildwin.cmd
