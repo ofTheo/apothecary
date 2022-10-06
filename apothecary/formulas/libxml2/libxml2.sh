@@ -27,8 +27,8 @@ function prepare() {
     fi
 
     if [ "$TYPE" == "vs" ]; then
-        cp $FORMULA_DIR/vs2015/*.h include/libxml/
-        cp -r $FORMULA_DIR/vs2015/* win32/VC10/
+        cp $FORMULA_DIR/vs2017/*.h include/libxml/
+        cp -r $FORMULA_DIR/vs2017/* win32/VC10/
     fi
 }
 
